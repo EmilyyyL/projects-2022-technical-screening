@@ -31,8 +31,18 @@ var assert = require("assert")
 // Explanation: Empty array...
 
 const altNumbers = (numArray) => {
-    // TODO: COMPLETE THIS FUNCTION
-    return [];
+    // Filter all the positive numbers into a new array
+    let outArray = numArray.filter(number => number >= 0)
+
+    // Calculate whether the array has to be shifted by 1
+    const shift = Boolean(outArray.length > numArray.length / 2)
+
+    // Add all the negative numbers between the positive numbers
+    numArray.filter(number => number < 0).forEach((element, index) => {
+        outArray.splice(index * 2 + shift, 0, element)
+    })
+
+    return outArray
 }
 
 module.exports = { altNumbers } // Do not modify this line
